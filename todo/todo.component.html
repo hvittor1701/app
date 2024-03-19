@@ -1,0 +1,53 @@
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-md-6 col-lg-4 todo-block">
+        <h4 class="text-center mb-3 todo-header">My Tasks</h4>
+        <div class="d-flex align-items-center justify-content-between">
+            <input class="form-control me-2" placeholder="Enter text..." type="text" name="text" [(ngModel)]="todoValue">
+            <button type="submit" class="btn btn-primary" (click)="addTodo()">Add</button>
+        </div>
+
+        <div class="todo-list mt-3">
+            <h5>Todo List</h5>
+            <div class="d-flex align-items-center todo-single" *ngFor="let todo of todoList; let i=index;">
+                <input type="checkbox" class="form-check-input me-2" [(ngModel)]="todo.value" (ngModelChange)="changeTodo(i)">
+                <p class="flex-grow-1">{{todo.content}}</p>
+                <button type="button" class="btn btn-outline-light text-danger" (click)="openModal(content, i, 'todoList')">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Finished List -->
+        <div class="todo-list mt-3" *ngIf="finishedList.length>0">
+            <h5>Finished List</h5>
+            <div class="d-flex align-items-center todo-single" *ngFor="let todo of finishedList; let i=index;">
+                <input type="checkbox" class="form-check-input me-2" [(ngModel)]="todo.value" (ngModelChange)="changeFinished(i)">
+                <p class="flex-grow-1">{{todo.content}}</p>
+                <button type="button" class="btn btn-outline-light text-danger" (click)="openModal(content, i, 'todoList')">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Delete</h4>
+        <button
+            type="button"
+            class="btn-close"
+            aria-describedby="modal-title"
+            (click)="modal.dismiss('Cross click')"
+        ></button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Are you sure you want to delete?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+    </div>
+</ng-template>

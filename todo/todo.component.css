@@ -1,0 +1,59 @@
+.todo-block {
+    min-height: 400px;
+    background: #fff;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #00000052;
+}
+
+.todo-header {
+    background: #00BCD4;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.todo-input {
+    margin-right: 10px;
+    padding: 7px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.del-btn, .edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.todo-single {
+    display: flex; 
+    align-items: center; 
+    padding: 5px 0;
+}
+
+.todo-single:last-child {
+    border: none;
+}
+
+.todo-single p {
+    margin: 0px;
+    padding: 5px;
+    flex-grow: 1; 
+}
+
+.todo-checkbox {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px; 
+}
+
+h5 {
+    background: #eee;
+    padding: 5px;
+    color: #3a3a3a;
+}
+
+.todo-list-done .todo-single p {
+    text-decoration: line-through;
+}
